@@ -14,7 +14,7 @@ module.exports.addcontracts = async (req, res) => {
 
 module.exports.getcontracts = async (req, res) => {
   try {
-    const contracts = await Contracts_Model.find();
+    const contracts = await Contracts_Model.find({status:""});
 
     res.status(200).send(contracts);
   } catch (err) {

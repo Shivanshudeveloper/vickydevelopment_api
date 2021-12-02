@@ -81,7 +81,7 @@ const ContractSchema = new mongoose.Schema({
   },
   ContractEndDate: {
     type: Date,
-    required: true,
+    default:null
   },
   date: {
     type: Date,
