@@ -24,12 +24,12 @@ const app = express();
 //     credentials:  true
 //   }
 
-var corsOptions = {
-  origin: 'https://ordermanagement.vercel.app',
-  credentials:  true
-}
+// var corsOptions = {
+//   origin: 'https://ordermanagement.vercel.app',
+//   credentials:  true
+// }
   
-app.use(cors(corsOptions))
+app.use(cors());
 app.use(cookies());
 app.use(express.json());
 
