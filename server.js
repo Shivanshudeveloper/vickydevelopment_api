@@ -24,10 +24,10 @@ const app = express();
 //     credentials:  true
 //   }
 
-// var corsOptions = {
-//   origin: 'https://ordermanagement.vercel.app',
-//   credentials:  true
-// }
+var corsOptions = {
+  origin: 'https://company-vicky.vercel.app',
+  credentials:  true
+}
   
 app.use(cors());
 app.use(cookies());

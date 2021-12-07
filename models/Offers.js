@@ -28,7 +28,7 @@ const OfferSchema = new mongoose.Schema({
     type: String,
   },
   scopeOfWork: {
-    type: String,
+    type: Object,
   },
   grossSalary: {
     type: String,
@@ -61,6 +61,14 @@ const OfferSchema = new mongoose.Schema({
   employmentForm: {
     type: String,
   },
+  workerHired:{
+    type:Boolean,
+    default:false
+  },
+  approved:{
+    type:Boolean,
+    default:false
+  }
   
 });
 const Offers = mongoose.model("Offers", OfferSchema);

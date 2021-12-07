@@ -38,10 +38,44 @@ module.exports.updatecontract = async(req, res) => {
     res.send(err);
   }
 }
+module.exports.changecontractstatus=async(req,res)=>{
+  const { workEmail,status} = req.body;
+  try {
+    const contract = await Contracts_Model.findOne({ workEmail: workEmail });
+    contract.status = status;
+
+    await contract.save();
+    res.send(contract);
+  } catch (err) {
+    res.send(err);
+  }
+}
+module.exports.changeapprovecontract = async(req, res) => {
+  const { workEmail,vickeyApproved} = req.body;
+  try {
+    const contract = await Contracts_Model.findOne({ workEmail: workEmail });
+    contract.vickeyApproved = vickeyApproved;
+    await contract.save();
+    res.send(contract);
+  } catch (err) {
+    res.send(err);
+  }
+}
 module.exports.getfinalizecontracts=async(req,res)=>{
 
   try {
     const contracts = await Contracts_Model.find({status:"Approved"});
+
+    res.status(200).send(contracts);
+  } catch (err) {
+    res.status(400).json({ err: err });
+    console.log(err);
+  }
+}
+module.exports.getvickeyapprovedcontracts=async(req,res)=>{
+
+  try {
+    const contracts = await Contracts_Model.find({vickeyApproved:true});
 
     res.status(200).send(contracts);
   } catch (err) {
@@ -72,6 +106,7 @@ module.exports.getcontract=async(req,res)=>{
     console.log(err);
   }
 }
+
 module.exports.removecontract = (req, res) => {
   Contracts_Model.deleteOne({ _id: req.params.id }, (err, docs) => {
     if (!err) {

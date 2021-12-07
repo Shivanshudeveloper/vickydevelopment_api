@@ -121,6 +121,10 @@ const ContractSchema = new mongoose.Schema({
     type: String,
     default: "",
   },
+  vickeyApproved:{
+    type:Boolean,
+    default:false
+  }
 });
 const Contracts = mongoose.model("Contracts", ContractSchema);
 module.exports = Contracts;

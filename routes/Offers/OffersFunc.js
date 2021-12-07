@@ -31,6 +31,48 @@ module.exports.getcompletedoffers = async (req, res) => {
     console.log(err);
   }
 };
+module.exports.getnotapprovedoffers = async (req, res) => {
+  try {
+    const Offers = await Offers_Model.find({ approved: false });
+
+    res.status(200).send(Offers);
+  } catch (err) {
+    res.status(400).json({ err: err });
+    console.log(err);
+  }
+};
+module.exports.getworkerhired = async (req, res) => {
+  try {
+    const Offers = await Offers_Model.find({ workerHired: true });
+
+    res.status(200).send(Offers);
+  } catch (err) {
+    res.status(400).json({ err: err });
+    console.log(err);
+  }
+};
+module.exports.updateworkerhired = async(req, res) => {
+  const { workEmail} = req.body;
+  try {
+    const off = await Offers_Model.findOne({ workEmail: workEmail });
+    off.workerHired=true;
+    await off.save();
+    res.send(off);
+  } catch (err) {
+    res.send(err);
+  }
+}
+module.exports.updateofferapprove = async(req, res) => {
+  const { workEmail,approved} = req.body;
+  try {
+    const off = await Offers_Model.findOne({ workEmail: workEmail });
+    off.approved=approved;
+    await off.save();
+    res.send(off);
+  } catch (err) {
+    res.send(err);
+  }
+}
 module.exports.updateoffer = async (req, res) => {
   Offers_Model.findOneAndUpdate(
     { _id: req.body._id },
