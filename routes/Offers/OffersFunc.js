@@ -52,10 +52,11 @@ module.exports.getworkerhired = async (req, res) => {
   }
 };
 module.exports.updateworkerhired = async(req, res) => {
-  const { workEmail} = req.body;
+  const { workEmail,adminSignature} = req.body;
   try {
     const off = await Offers_Model.findOne({ workEmail: workEmail });
     off.workerHired=true;
+    off.adminSignature=adminSignature;
     await off.save();
     res.send(off);
   } catch (err) {

@@ -68,6 +68,12 @@ const OfferSchema = new mongoose.Schema({
   approved:{
     type:Boolean,
     default:false
+  },
+  signature:{
+    type:String,
+  },
+  adminSignature:{
+    type:String,
   }
   
 });
