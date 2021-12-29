@@ -13,6 +13,7 @@ const ContractRouter=require("../routes/Contracts/ContractsRouter");
 const OfferRouter=require("../routes/Offers/OffersRouter");
 const RequestRouter=require("../routes/Requests/RequestsRouter");
 const JobRouter=require('../routes/Job/JobRouter');
+const FilesRouter=require('../routes/Files/FilesRouter');
 const { v4: uuidv4 } = require("uuid");
 // Getting Module
 const Products_Model = require("../models/Products");
@@ -183,4 +184,5 @@ router.use('/customer',CustomerRouter);
 router.use('/order',OrderRouter);
 router.use('/qr',QRCodeRouter);
 router.use('/job',JobRouter);
+router.use('/files',FilesRouter);
 module.exports = router;
