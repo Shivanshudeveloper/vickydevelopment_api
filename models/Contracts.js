@@ -4,101 +4,135 @@ const ContractSchema = new mongoose.Schema({
   AggrementType: {
     type: String,
   },
-  AggrementFor: {
+  employeeFirstName: {
     type: String,
+    default: "",
   },
-  workFirstName: {
+  employeeLastName: {
     type: String,
-    required: true,
-  },
-  workLastName: {
-    type: String,
-    required: true,
+    default: "",
   },
   nationality: {
     type: String,
-    required: true,
+
+    default: "",
   },
-  workEmail: {
+  countryOfWork: {
     type: String,
-    required: true,
+
+    default: "",
   },
-  jobTitle: {
+  email: {
     type: String,
-    required: true,
+
+    default: "",
   },
-  jobDescription: {
+  companyType: {
     type: String,
-    required: true,
+
+    default: "",
   },
-  workCountry: {
+  companyName: {
     type: String,
-    required: true,
+
+    default: "",
   },
-  otherValidity: {
+  companyAddress: {
     type: String,
-    required: true,
+
+    default: "",
   },
-  jobRequiresVisa: {
+  companyPhoneNumber: {
     type: String,
-    required: true,
+
+    default: "",
   },
-  trialPeriod: {
+  companyEmail: {
     type: String,
-    required: true,
+    default: "",
   },
-  currency: {
+  companyRegNo: {
     type: String,
-    required: true,
+    default: "",
   },
-  grossSalary: {
+  companyVAT: {
     type: String,
-    required: true,
+    default: "",
   },
-  paymentCycle: {
+  permanentJob: {
     type: String,
-    required: true,
-  },
-  vacationsDays: {
-    type: String,
-    required: true,
-  },
-  sickLeave: {
-    type: String,
-    required: true,
-  },
-  transportation: {
-    type: String,
-    required: true,
-  },
-  BonusPlan: {
-    type: String,
-    required: true,
+    default: "",
   },
   startOfWork: {
     type: Date,
-    required: true,
+    default: "",
   },
-  ContractEndDate: {
+  endOfWork: {
     type: Date,
-    default:null
+    default: "",
+  },
+  differentlocations: {
+    type: Boolean,
+    default: "",
+  },
+  jobTitle: {
+    type: String,
+    default: "",
+  },
+  jobScope: {
+    type: String,
+    default: "",
+  },
+  currency: {
+    type: String,
+    default: "",
+  },
+  period: {
+    type: String,
+    default: "",
+  },
+  grossSalary: {
+    type: String,
+    default: "",
+  },
+  commissionPlan: {
+    type: String,
+    default: "",
+  },
+  probationPeriod: {
+    type: String,
+    default: "",
+  },
+  payPeriod: {
+    type: String,
+    default: "",
+  },
+  timeOff: {
+    type: String,
+    default: "",
+  },
+  paidVactionDays: {
+    type: Number,
+    default: "",
+  },
+  sickDays: {
+    type: Number,
+    default: "",
+  },
+  healthcareInsurance: {
+    type: String,
+    default: "",
+  },
+  CommissionFormula: {
+    type: String,
+    default: "",
   },
   date: {
     type: Date,
     default: Date.now,
   },
-  employeeInformation: {
-    type: String,
-  },
-  scopeOfWork: {
-    type: String,
-  },
-  salaryandDetails: {
-    type: String,
-  },
   status: {
     type: String,
-
     default: "",
   },
   signUrl: {
@@ -108,6 +142,26 @@ const ContractSchema = new mongoose.Schema({
   remarks: {
     type: String,
     default: "",
+  },
+  bankName: {
+    type: String,
+    default: "",
+  },
+  bankAddress: {
+    type: String,
+    default: "",
+  },
+  bankNumber: {
+    type: String,
+    default: "",
+  },
+  accountNumber: {
+    type: String,
+    default: "",
+  },
+  documents: {
+    type: Array,
+    default: [],
   },
   commercialContract1: {
     type: String,
@@ -121,10 +175,50 @@ const ContractSchema = new mongoose.Schema({
     type: String,
     default: "",
   },
-  vickeyApproved:{
-    type:Boolean,
-    default:false
-  }
+  contractType: {
+    type: String,
+    default: "Employment full time",
+  },
+  vickySignature: {
+    type: String,
+    default: "",
+  },
+  vickySignatureDate: {
+    type: Date,
+    default: "",
+  },
+  customerSignature: {
+    type: String,
+    default: "",
+  },
+  customerSignatureDate: {
+    type: Date,
+    default: "",
+  },
+  employeeSignature: {
+    type: String,
+    default: "",
+  },
+  employeeSignatureDate: {
+    type: Date,
+    default: "",
+  },
+  vickyEmployeeSignature: {
+    type: String,
+    default: "",
+  },
+  vickyEmployeeSignatureDate: {
+    type: Date,
+    default: "",
+  },
+  clientName: {
+    type: String,
+    default: "",
+  },
+  vickeyApproved: {
+    type: Boolean,
+    default: false,
+  },
 });
 const Contracts = mongoose.model("Contracts", ContractSchema);
 module.exports = Contracts;

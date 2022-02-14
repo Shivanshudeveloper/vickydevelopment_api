@@ -1,10 +1,21 @@
 const mongoose = require("mongoose");
 
 const userDataSchema = new mongoose.Schema({
-  username: {
+  uid: {
     type: String,
     required: true,
   },
+  fName: { type: String, required: true },
+  lName: { type: String, required: true },
+  website: { type: String, default: "" },
+  headquaters: { type: String, default: "" },
+  numberOfPeople: { type: String, default: "" },
+  registrationNumber: { type: String, default: "" },
+  companyType: { type: String, default: "" },
+  vatID: { type: String, default: "" },
+  phone: { type: String, default: "" },
+  organisationName: { type: String, default: "" },
+  address: { type: String, default: "" },
   email: {
     type: String,
     unique: true,
@@ -12,23 +23,7 @@ const userDataSchema = new mongoose.Schema({
   },
   description: {
     type: String,
-    required: false,
-  },
-  restaurantName: {
-    type: String,
-    required: true,
-  },
-  layout: {
-    type: Boolean,
-    default: true,
-  },
-  logo: {
-    type: String,
     default: "",
-  },
-  restaurantAddress:{
-      type:String,
-      default:""
   },
   date: {
     type: Date,

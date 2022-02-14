@@ -1,25 +1,25 @@
 const express = require("express");
 const router = express.Router();
-const CategoriesRouter=require('./categories/CategoriesRouter');
-const MenuRouter=require("../routes/Menu/MenuRouter");
-const UserRouter=require("../routes/User/UserRouter");
-const BannersRouter=require("../routes/Banners/BannersRouter");
-const CouponsRouter=require("../routes/Coupons/CouponsRouter");
-const AuthRouter=require("../routes/Auth/AuthRouter");
-const CustomerRouter=require("../routes/Customers/CustomersRouter");
-const QRCodeRouter=require("../routes/QRCodes/QRCodesRouter");
-const OrderRouter=require("../routes/Order/OrderRouter");
-const ContractRouter=require("../routes/Contracts/ContractsRouter");
-const OfferRouter=require("../routes/Offers/OffersRouter");
-const RequestRouter=require("../routes/Requests/RequestsRouter");
-const JobRouter=require('../routes/Job/JobRouter');
-const FilesRouter=require('../routes/Files/FilesRouter');
-const InvoicesRouter=require("../routes/Invoices/InvoicesRouter");
+const CategoriesRouter = require("./categories/CategoriesRouter");
+const MenuRouter = require("../routes/Menu/MenuRouter");
+const UserRouter = require("../routes/User/UserRouter");
+const DemoUserRouter = require("../routes/User-Demo/UserRouter");
+const BannersRouter = require("../routes/Banners/BannersRouter");
+const CouponsRouter = require("../routes/Coupons/CouponsRouter");
+const AuthRouter = require("../routes/Auth/AuthRouter");
+const CustomerRouter = require("../routes/Customers/CustomersRouter");
+const QRCodeRouter = require("../routes/QRCodes/QRCodesRouter");
+const OrderRouter = require("../routes/Order/OrderRouter");
+const ContractRouter = require("../routes/Contracts/ContractsRouter");
+const OfferRouter = require("../routes/Offers/OffersRouter");
+const RequestRouter = require("../routes/Requests/RequestsRouter");
+const JobRouter = require("../routes/Job/JobRouter");
+const FilesRouter = require("../routes/Files/FilesRouter");
+const InvoicesRouter = require("../routes/Invoices/InvoicesRouter");
 const { v4: uuidv4 } = require("uuid");
 // Getting Module
 const Products_Model = require("../models/Products");
 const MainStore_Model = require("../models/MainStore");
-
 
 const stripe = require("stripe")(
   "sk_test_51JHsVhHTwp1a1ssg6tNelx0wUKQoKhxbr1S6yajKtX1ppZUpv0sNQAJ4A0Yb9yGNMwm2tZ1efaarIykDm21zNWWd00lNcFUkc3"
@@ -50,8 +50,8 @@ router.post("/charges", async (req, res) => {
     metadata: { integration_check: "accept_a_payment" },
     receipt_email: email,
   });
-console.log(paymentIntent["client_secret"]);
-  res.send({cc:paymentIntent["client_secret"]} );
+  console.log(paymentIntent["client_secret"]);
+  res.send({ cc: paymentIntent["client_secret"] });
 });
 router.post("/secret", async (req, res) => {
   // const {email, amount} = req.body;
@@ -172,19 +172,20 @@ router.get("/getallproductsapifilters/:filter", (req, res) => {
     })
     .catch((err) => res.status(400).json(`Error: ${err}`));
 });
-router.use('/',CategoriesRouter);
-router.use('/menu',MenuRouter);
-router.use('/user',UserRouter)
-router.use('/banners',BannersRouter);
-router.use('/coupons',CouponsRouter);
-router.use('/auth',AuthRouter);
-router.use('/contract',ContractRouter);
-router.use('/offer',OfferRouter);
-router.use('/request',RequestRouter);
-router.use('/customer',CustomerRouter);
-router.use('/order',OrderRouter);
-router.use('/qr',QRCodeRouter);
-router.use('/job',JobRouter);
-router.use('/files',FilesRouter);
-router.use('/invoices',InvoicesRouter);
+router.use("/", CategoriesRouter);
+router.use("/menu", MenuRouter);
+router.use("/demouser", DemoUserRouter);
+router.use("/user", UserRouter);
+router.use("/banners", BannersRouter);
+router.use("/coupons", CouponsRouter);
+router.use("/auth", AuthRouter);
+router.use("/contract", ContractRouter);
+router.use("/offer", OfferRouter);
+router.use("/request", RequestRouter);
+router.use("/customer", CustomerRouter);
+router.use("/order", OrderRouter);
+router.use("/qr", QRCodeRouter);
+router.use("/job", JobRouter);
+router.use("/files", FilesRouter);
+router.use("/invoices", InvoicesRouter);
 module.exports = router;

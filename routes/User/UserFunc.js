@@ -20,12 +20,28 @@ module.exports.getuser = async (req, res) => {
     console.log(err);
   }
 };
+module.exports.updateuser = async (req, res) => {
+  const { email } = req.params;
+  const user = req.body;
+  try {
+    await User_Model.findOneAndUpdate({ email: email }, user, {
+      useFindAndModify: false,
+    });
+
+    res.status(200).send({ message: "Updated" });
+  } catch (err) {
+    res.status(400).json({ err: err });
+    console.log(err);
+  }
+};
 
 module.exports.setlayout = (req, res) => {
   const { email, grid } = req.body;
 
-  User_Model.findOneAndUpdate({email:email},
-    {$set: {layout:grid}}, {useFindAndModify: false},
+  User_Model.findOneAndUpdate(
+    { email: email },
+    { $set: { layout: grid } },
+    { useFindAndModify: false },
     function (err, doc) {
       if (err) return res.send(500, { error: err });
       return res.send(doc);

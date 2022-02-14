@@ -13,12 +13,13 @@ module.exports.addinvoice = async (req, res) => {
 };
 module.exports.getinvoices = async (req,res) => {
   try {
-    const Invoices = await Invoices_Model.find({});
+    const Invoices = await Invoices_Model.find({}).sort({date:-1});
     res.send(Invoices);
   } catch (err) {
     res.send(err);
   }
 };
+
 module.exports.updateinvoice=(req,res)=>{
   Invoices_Model.findOneAndUpdate(
     { _id: req.params.id },
