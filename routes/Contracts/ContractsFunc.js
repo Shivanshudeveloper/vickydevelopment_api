@@ -45,7 +45,9 @@ module.exports.updatecontractbyid = (req, res) => {
 
 module.exports.getcontracts = async (req, res) => {
   try {
-    const contracts = await Contracts_Model.find().sort({ date: -1 });
+    const contracts = await Contracts_Model.find({
+      createdByEmail: req.params.createdByEmail,
+    }).sort({ date: -1 });
     res.status(200).send(contracts);
   } catch (err) {
     res.status(400).json({ err: err });

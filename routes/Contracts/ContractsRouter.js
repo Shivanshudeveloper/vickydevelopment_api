@@ -4,7 +4,7 @@ const router = express.Router();
 const ContractsFunc = require("./ContractsFunc");
 
 router.post("/addcontract", ContractsFunc.addcontracts);
-router.get("/getcontracts", ContractsFunc.getcontracts);
+router.get("/getcontracts/:createdByEmail", ContractsFunc.getcontracts);
 router.get("/searchcontract/:text", ContractsFunc.searchcontract);
 router.get("/searchcontractemp/:text/:email", ContractsFunc.searchcontractemp);
 router.get("/getlatestcontract/:email", ContractsFunc.getlatestcontract);

@@ -61,6 +61,17 @@ module.exports.updatejob = (req, res) => {
     }
   );
 };
+module.exports.getjobsbyemail = async (req, res) => {
+  const { recruiterEmail } = req.params;
+  try {
+    const Jobs = await Job_Model.find({ recruiterEmail: recruiterEmail }).sort({
+      date: -1,
+    });
+    res.status(200).send(Jobs);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+};
 module.exports.getjobsbycountry = async (req, res) => {
   const { country } = req.params;
   try {

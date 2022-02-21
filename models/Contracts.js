@@ -219,6 +219,10 @@ const ContractSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  createdByEmail: {
+    type: String,
+    default: "",
+  },
 });
 const Contracts = mongoose.model("Contracts", ContractSchema);
 module.exports = Contracts;
