@@ -57,6 +57,10 @@ const JobSchema = new mongoose.Schema({
     type: String,
     default: "",
   },
+  createdByEmail: {
+    type: String,
+    default: "",
+  },
   publishDate: {
     type: Date,
   },

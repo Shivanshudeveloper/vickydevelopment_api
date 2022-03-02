@@ -8,6 +8,10 @@ const InvoiceSchema = new mongoose.Schema({
     type: String,
     default: "Pending",
   },
+  createdByEmail: {
+    type: String,
+    default: "",
+  },
   pendingTime: {
     type: Number,
     default: 0,
