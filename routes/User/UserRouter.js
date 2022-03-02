@@ -5,6 +5,7 @@ const router = express.Router();
 const UserFunc = require("./UserFunc");
 
 router.post("/register", UserFunc.adduser);
+router.get("/getuserbyid/:id", UserFunc.getuserbyid);
 router.get("/getuser/:email", UserFunc.getuser);
 router.patch("/updateuser/:email", UserFunc.updateuser);
 router.patch("/setlayout", UserFunc.setlayout);

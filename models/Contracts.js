@@ -223,6 +223,58 @@ const ContractSchema = new mongoose.Schema({
     type: String,
     default: "",
   },
+  vickySignatureSignedBy: {
+    type: String,
+    default: "",
+  },
+  vickySignatureIP: {
+    type: String,
+    default: "",
+  },
+  vickySignatureCountry: {
+    type: String,
+    default: "",
+  },
+  vickySignatureEmail: {
+    type: String,
+    default: "",
+  },
+  clientSignatureIP: {
+    type: String,
+    default: "",
+  },
+  clientSignatureCountry: {
+    type: String,
+    default: "",
+  },
+  clientSignatureEmail: {
+    type: String,
+    default: "",
+  },
+  employeeSignatureIP: {
+    type: String,
+    default: "",
+  },
+  employeeSignatureCountry: {
+    type: String,
+    default: "",
+  },
+  employeeSignatureEmail: {
+    type: String,
+    default: "",
+  },
+  vickyEmployeeSignatureIP: {
+    type: String,
+    default: "",
+  },
+  vickyEmployeeSignatureCountry: {
+    type: String,
+    default: "",
+  },
+  vickyEmployeeSignatureEmail: {
+    type: String,
+    default: "",
+  },
 });
 const Contracts = mongoose.model("Contracts", ContractSchema);
 module.exports = Contracts;

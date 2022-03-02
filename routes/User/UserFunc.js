@@ -9,6 +9,17 @@ module.exports.adduser = async (req, res) => {
     console.log(err);
   }
 };
+module.exports.getuserbyid = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const user = await User_Model.find({ _id: id });
+
+    res.status(200).send(user);
+  } catch (err) {
+    res.status(400).json({ err: err });
+    console.log(err);
+  }
+};
 module.exports.getuser = async (req, res) => {
   const { email } = req.params;
   try {

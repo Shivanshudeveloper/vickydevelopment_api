@@ -101,6 +101,7 @@ module.exports.getcontractsByEmail = async (req, res) => {
   try {
     const contracts = await Contracts_Model.find({
       email: req.params.email,
+      status: req.params.status,
     }).sort({ date: -1 });
     res.status(200).send(contracts);
   } catch (err) {
@@ -179,11 +180,21 @@ module.exports.changecustomersignature = async (req, res) => {
   }
 };
 module.exports.changevickyemployee = async (req, res) => {
-  const { _id, vickyEmployeeSignature, vickyEmployeeSignatureDate } = req.body;
+  const {
+    _id,
+    vickyEmployeeSignature,
+    vickyEmployeeSignatureDate,
+    vickyEmployeeSignatureIP,
+    vickyEmployeeSignatureCountry,
+    vickyEmployeeSignatureEmail,
+  } = req.body;
   try {
     const contract = await Contracts_Model.findOne({ _id: _id });
     contract.vickyEmployeeSignature = vickyEmployeeSignature;
     contract.vickyEmployeeSignatureDate = vickyEmployeeSignatureDate;
+    contract.vickyEmployeeSignatureIP = vickyEmployeeSignatureIP;
+    contract.vickyEmployeeSignatureCountry = vickyEmployeeSignatureCountry;
+    contract.vickyEmployeeSignatureEmail = vickyEmployeeSignatureEmail;
     const newContract = await Contracts_Model.findByIdAndUpdate(
       contract._id,
       contract,
@@ -195,11 +206,23 @@ module.exports.changevickyemployee = async (req, res) => {
   }
 };
 module.exports.changevickysignature = async (req, res) => {
-  const { _id, vickySignature, vickySignatureDate } = req.body;
+  const {
+    _id,
+    vickySignature,
+    vickySignatureDate,
+    vickySignatureSignedBy,
+    vickySignatureIP,
+    vickySignatureCountry,
+    vickySignatureEmail,
+  } = req.body;
   try {
     const contract = await Contracts_Model.findOne({ _id: _id });
     contract.vickySignature = vickySignature;
     contract.vickySignatureDate = vickySignatureDate;
+    contract.vickySignatureSignedBy = vickySignatureSignedBy;
+    contract.vickySignatureIP = vickySignatureIP;
+    contract.vickySignatureCountry = vickySignatureCountry;
+    contract.vickySignatureEmail = vickySignatureEmail;
     const newContract = await Contracts_Model.findByIdAndUpdate(
       contract._id,
       contract,

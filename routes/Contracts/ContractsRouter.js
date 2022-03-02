@@ -8,7 +8,10 @@ router.get("/getcontracts/:createdByEmail", ContractsFunc.getcontracts);
 router.get("/searchcontract/:text", ContractsFunc.searchcontract);
 router.get("/searchcontractemp/:text/:email", ContractsFunc.searchcontractemp);
 router.get("/getlatestcontract/:email", ContractsFunc.getlatestcontract);
-router.get("/getcontractsbyemail/:email", ContractsFunc.getcontractsByEmail);
+router.get(
+  "/getcontractsbyemail/:email/:status",
+  ContractsFunc.getcontractsByEmail
+);
 router.patch("/updatecontract", ContractsFunc.updatecontract);
 router.patch("/changecontractstatus", ContractsFunc.changecontractstatus);
 router.patch("/changeapprovecontract", ContractsFunc.changeapprovecontract);

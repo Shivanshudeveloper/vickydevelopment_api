@@ -3,6 +3,8 @@ const router = express.Router();
 const CategoriesRouter = require("./categories/CategoriesRouter");
 const MenuRouter = require("../routes/Menu/MenuRouter");
 const UserRouter = require("../routes/User/UserRouter");
+const MeetRouter = require("../routes/JobMeeting/MeetRouter");
+const MailRouter = require("../routes/SendMail/MailRouter");
 const DemoUserRouter = require("../routes/User-Demo/UserRouter");
 const BannersRouter = require("../routes/Banners/BannersRouter");
 const CouponsRouter = require("../routes/Coupons/CouponsRouter");
@@ -174,6 +176,8 @@ router.get("/getallproductsapifilters/:filter", (req, res) => {
 });
 router.use("/", CategoriesRouter);
 router.use("/menu", MenuRouter);
+router.use("/mail", MailRouter);
+router.use("/meet", MeetRouter);
 router.use("/demouser", DemoUserRouter);
 router.use("/user", UserRouter);
 router.use("/banners", BannersRouter);
