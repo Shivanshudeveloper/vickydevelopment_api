@@ -9,6 +9,10 @@ router.get("/searchcontract/:text", ContractsFunc.searchcontract);
 router.get("/searchcontractemp/:text/:email", ContractsFunc.searchcontractemp);
 router.get("/getlatestcontract/:email", ContractsFunc.getlatestcontract);
 router.get(
+  "/getcontractsbyworkeremail/:email",
+  ContractsFunc.getcontractsbyworkeremail
+);
+router.get(
   "/getcontractsbyemail/:email/:status",
   ContractsFunc.getcontractsByEmail
 );

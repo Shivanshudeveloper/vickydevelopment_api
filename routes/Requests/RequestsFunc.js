@@ -31,6 +31,17 @@ module.exports.getrequests = async (req, res) => {
     res.send(err);
   }
 };
+module.exports.getrequestsbyemail = async (req, res) => {
+  try {
+    const Request = await Requests_Model.find({
+      requestedBy: req.params.email,
+    }).sort({ createdAt: -1 });
+
+    res.send(Request);
+  } catch (err) {
+    res.send(err);
+  }
+};
 module.exports.getrequest = async (req, res) => {
   try {
     const Request = await Requests_Model.find({ _id: req.params.id }).sort({

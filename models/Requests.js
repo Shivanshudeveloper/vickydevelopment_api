@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
 
 const RequestSchema = new mongoose.Schema({
-title:{
-type:String,
-default:""
-},
+  title: {
+    type: String,
+    default: "",
+  },
   requestType: {
     type: String,
     default: "",
@@ -44,6 +44,14 @@ default:""
   createdAt: {
     type: Date,
     default: Date.now,
+  },
+  requestedBy: {
+    type: String,
+    default: "",
+  },
+  declineMessage: {
+    type: String,
+    default: "Declined",
   },
 });
 const Requests = mongoose.model("Requests", RequestSchema);

@@ -28,6 +28,7 @@ module.exports.addcontracts = async (req, res) => {
     }
   }
 };
+
 module.exports.updatecontractbyid = (req, res) => {
   Contracts_Model.findOneAndUpdate(
     { _id: req.body._id },
@@ -54,6 +55,7 @@ module.exports.getcontracts = async (req, res) => {
     console.log(err);
   }
 };
+
 module.exports.searchcontractemp = async (req, res) => {
   const text = req.params.text;
   const email = req.params.email;
@@ -70,6 +72,7 @@ module.exports.searchcontractemp = async (req, res) => {
     console.log(err);
   }
 };
+
 module.exports.searchcontract = async (req, res) => {
   const text = req.params.text;
   const contractType = new RegExp(text, "i");
@@ -85,6 +88,7 @@ module.exports.searchcontract = async (req, res) => {
     console.log(err);
   }
 };
+
 module.exports.getlatestcontract = async (req, res) => {
   try {
     const contracts = await Contracts_Model.find({
@@ -109,6 +113,19 @@ module.exports.getcontractsByEmail = async (req, res) => {
     console.log(err);
   }
 };
+
+module.exports.getcontractsbyworkeremail = async (req, res) => {
+  try {
+    const contracts = await Contracts_Model.find({
+      email: req.params.email,
+    }).sort({ date: -1 });
+    res.status(200).send(contracts);
+  } catch (err) {
+    res.status(400).json({ err: err });
+    console.log(err);
+  }
+};
+
 module.exports.getcontractsbystatus = async (req, res) => {
   try {
     console.log(req.params.status);
@@ -243,9 +260,9 @@ module.exports.changecontractstatus = async (req, res) => {
       contract,
       { useFindAndModify: false }
     );
-    res.send(contract);
+    res.status(200).send(newContract);
   } catch (err) {
-    res.send(err);
+    res.status(404).send(err);
   }
 };
 module.exports.getcontractscount = async (req, res) => {
