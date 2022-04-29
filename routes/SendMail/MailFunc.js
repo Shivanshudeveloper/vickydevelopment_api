@@ -27,3 +27,26 @@ module.exports.send = async (req, res) => {
     console.log(err);
   }
 };
+
+
+module.exports.approvalrequest = async (req, res) => {
+  const { email } = req.body;
+  try {
+    const message = {
+      // to: "manav.nanwani@gmail.com",
+      to: 's.safyi@govickey.com',
+      from: { name: "GO Vicky", email: "no-reply@govickey.com" },
+      // from: "no-reply@govickey.com",
+      subject: 'Approval Request',
+      text: `Their is a website approval request for ${email}`,
+    };
+    sgMail
+      .send(message)
+      .then((response) => console.log("Email Sent"))
+      .catch((err) => console.log(err));
+    res.status(200).send({ message: "Mail Sent" });
+  } catch (err) {
+    res.status(400).json({ err: err });
+    console.log(err);
+  }
+};

@@ -18,6 +18,7 @@ const RequestRouter = require("../routes/Requests/RequestsRouter");
 const JobRouter = require("../routes/Job/JobRouter");
 const FilesRouter = require("../routes/Files/FilesRouter");
 const InvoicesRouter = require("../routes/Invoices/InvoicesRouter");
+const EmailRouter = require("../routes/Email/emailrouter");
 const { v4: uuidv4 } = require("uuid");
 // Getting Module
 const Products_Model = require("../models/Products");
@@ -177,6 +178,7 @@ router.get("/getallproductsapifilters/:filter", (req, res) => {
 router.use("/", CategoriesRouter);
 router.use("/menu", MenuRouter);
 router.use("/mail", MailRouter);
+router.use("/emailapproval", EmailRouter);
 router.use("/meet", MeetRouter);
 router.use("/demouser", DemoUserRouter);
 router.use("/user", UserRouter);

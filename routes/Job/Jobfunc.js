@@ -11,6 +11,14 @@ module.exports.add = async (req, res) => {
     res.status(500).send(err);
   }
 };
+module.exports.getalljobs = async (req, res) => {
+  try {
+    const Jobs = await Job_Model.find().sort({ publishDate: -1 });
+    res.status(200).send(Jobs);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+};
 module.exports.getjobs = async (req, res) => {
   try {
     const Jobs = await Job_Model.find({

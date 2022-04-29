@@ -4,6 +4,7 @@ const router = express.Router();
 const Jobfun = require("./Jobfunc");
 
 router.get("/getjobs/:createdByEmail", Jobfun.getjobs);
+router.get("/getalljobs", Jobfun.getalljobs);
 router.post("/add", Jobfun.add);
 router.delete("/deletejob/:id", Jobfun.deletejob);
 router.patch("/updatejob/:id", Jobfun.updatejob);

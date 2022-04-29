@@ -1,5 +1,26 @@
 const { stringify } = require("uuid");
+const sgMail = require('@sendgrid/mail');
 const Contracts_Model = require("../../models/Contracts");
+
+// Sending emails
+const sendEmails = (toemail, subject, message) => {
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+  const msg = {
+    to: toemail,
+    from: 'no-reply@govickey.com', // Use the email address or domain you verified above
+    subject: subject,
+    text: message,
+    html: `<strong>${message}</strong>`,
+  };
+  sgMail
+  .send(msg)
+  .then(() => {}, error => {
+    console.error(error);
+    if (error.response) {
+      console.error(error.response.body)
+    }
+  });
+}
 
 module.exports.addcontracts = async (req, res) => {
   if (req.body._id) {
@@ -20,7 +41,7 @@ module.exports.addcontracts = async (req, res) => {
       const Contracts = new Contracts_Model(req.body);
 
       await Contracts.save();
-      console.log(Contracts);
+      sendEmails(req.body.email, 'New Contract', 'A new contract is created for you please login to your govickey account to check it once.');
       res.status(200).send(Contracts);
     } catch (err) {
       res.status(400).json({ err: err });
